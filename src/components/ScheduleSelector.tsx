@@ -1,4 +1,5 @@
 ﻿import { TimePicker, Select, Row, Col, Button } from "antd";
+import { DeleteOutlined } from "@ant-design/icons";
 import dayjs from "dayjs";
 
 const SLOT_LABELS = [
@@ -42,10 +43,15 @@ export default function ScheduleSelector({ value, onChange }: ScheduleSelectorPr
     onChange([...value, { label: "起床時", time: null }]);
   };
 
+  const removeSlot = (index: number) => {
+    const next = value.filter((_, i) => i !== index);
+    onChange(next);
+  };
+
   return (
     <>
       {value.map((slot, i) => (
-        <Row key={i} gutter={8} style={{ marginBottom: 8 }}>
+        <Row key={i} gutter={8} style={{ marginBottom: 8 }} align="middle">
           <Col flex="180px">
             <Select
               value={slot.label}
@@ -60,6 +66,14 @@ export default function ScheduleSelector({ value, onChange }: ScheduleSelectorPr
               onChange={(t) => handleTimeChange(i, t)}
               format="HH:mm"
               style={{ width: "100%" }}
+            />
+          </Col>
+          <Col flex="40px">
+            <Button
+              type="text"
+              icon={<DeleteOutlined />}
+              danger
+              onClick={() => removeSlot(i)}
             />
           </Col>
         </Row>
