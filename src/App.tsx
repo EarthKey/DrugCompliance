@@ -11,12 +11,14 @@ function App() {
   };
 
   return (
-    <Layout style={{ maxWidth: 480, margin: '0 auto', padding: 24 }}>
-      <h1 style={{ textAlign: 'center' }}>服薬スケジュール設定</h1>
-      <ScheduleSelector value={schedule} onChange={setSchedule} />
-      <Button type="primary" block style={{ marginTop: 16 }} onClick={handleSave}>
-        保存
-      </Button>
+    <Layout style={{ minHeight: '100vh', display: 'flex', justifyContent: 'center', alignItems: 'flex-start', paddingTop: 48 }}>
+      <div className="app-container" style={{ width: 480 }}>
+        <h1 style={{ textAlign: 'center' }}>服薬スケジュール設定</h1>
+        <ScheduleSelector value={schedule} onChange={setSchedule} />
+        <Button type="primary" block style={{ marginTop: 16 }} onClick={handleSave}>
+          保存
+        </Button>
+      </div>
     </Layout>
   );
 }
