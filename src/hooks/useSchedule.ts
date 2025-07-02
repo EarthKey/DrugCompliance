@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import dayjs from 'dayjs';
-import { ScheduleItem } from '../components/ScheduleSelector';
+import type { ScheduleItem } from '../components/ScheduleSelector';
 
 const STORAGE_KEY = 'drugcompliance_schedule_v1';
 
@@ -9,7 +9,7 @@ export function useSchedule(): [ScheduleItem[], (s: ScheduleItem[]) => void] {
     try {
       const raw = localStorage.getItem(STORAGE_KEY);
       if (!raw) return [];
-      const parsed: ScheduleItem[] = JSON.parse(raw).map((item) => ({
+      const parsed: ScheduleItem[] = (JSON.parse(raw) as any[]).map((item: any) => ({
         ...item,
         time: item.time ? dayjs(item.time) : null,
       }));

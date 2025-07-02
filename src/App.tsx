@@ -1,8 +1,6 @@
-import { useState } from 'react'
 import { Button, Layout, message } from 'antd';
-import dayjs from 'dayjs';
-import ScheduleSelector, { ScheduleItem } from './components/ScheduleSelector';
-import { useSchedule } from './hooks/useSchedule';
+import ScheduleSelector from './components/ScheduleSelector';
+import { useSchedule } from './hooks/useSchedule.ts';
 import './App.css'
 
 function App() {
